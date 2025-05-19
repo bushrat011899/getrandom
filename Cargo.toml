@@ -11,6 +11,11 @@ repository = "https://github.com/rust-random/getrandom"
 categories = ["os", "no-std"]
 exclude = [".*"]
 
+[workspace]
+members = [
+  "./crates/getrandom-core", "crates/getrandom-backend-windows",
+]
+
 [features]
 # Implement std::error::Error for getrandom::Error and
 # use std to retrieve OS error descriptions
@@ -26,6 +31,7 @@ rustc-dep-of-std = ["dep:compiler_builtins", "dep:core"]
 wasm_js = ["dep:wasm-bindgen", "dep:js-sys"]
 
 [dependencies]
+getrandom-core = { path = "./crates/getrandom-core" }
 cfg-if = "1"
 
 # When built as part of libstd
